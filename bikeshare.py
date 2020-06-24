@@ -1,11 +1,6 @@
 import time
 import pandas as pd
 
-#Dictionary used to load the right csv file
-CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',
-              'washington': 'washington.csv' }
-
 def seperator(x = '=', y = 40):
     """
     Seperator function used for aesthetic purposes.
@@ -23,6 +18,10 @@ def get_filters():
     Returns:
         chosen city, month, day
     """
+    city_data = { 'chicago': 'chicago.csv',
+                  'new york city': 'new_york_city.csv',
+                  'washington': 'washington.csv' }
+
     print('Hello!  Let\'s explore some US bikeshare data!')
     seperator('-')
 
@@ -30,7 +29,7 @@ def get_filters():
     while True:
         city = input('''Which cities data would you like to explore?
 Enter 'chicago', 'new york city', or 'washington': ''').lower()
-        if city in CITY_DATA.keys():
+        if city in city_data.keys():
             break
         else:
             print('\nInvalid input.  Please try again.\n')
@@ -83,8 +82,19 @@ def load_data(city, month, day):
         df - Panda DataFrame containing the city data, filtered if requested
 
     """
+<<<<<<< HEAD
     #Load csv into DataFrame and add needed columns
     df = pd.read_csv(CITY_DATA[city])
+||||||| 68fb774
+    #Load csv into DataFrame and add need columns
+    df = pd.read_csv(CITY_DATA[city])
+=======
+    city_data = { 'chicago': 'chicago.csv',
+                  'new york city': 'new_york_city.csv',
+                  'washington': 'washington.csv' }
+    #Load csv into DataFrame and add need columns
+    df = pd.read_csv(city_data[city])
+>>>>>>> 81965ce3a227db016759f3bfec94c887480584c2
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['Month'] = df['Start Time'].dt.month_name()
     df['Day'] = df['Start Time'].dt.day_name()
@@ -301,6 +311,7 @@ def raw_data(df):
     """
     #Drop columns I earlier inserted and sort by Start Time
     df = df.drop(['Month', 'Day', 'Hour'], axis = 1)
+    df = df.fillna('Unknown')
     df = df.sort_values(by=['Start Time'])
     df_stacked = df.stack()
 
@@ -309,7 +320,7 @@ def raw_data(df):
     columns = df.shape[1]
     while True:
         r_data = input('''\nWould you like to see some raw data?
-Enter \'y\' or \'n\': ''').lower()
+Enter 'y' or 'n': ''').lower()
         if r_data != 'y':
             break
         else:
@@ -325,17 +336,17 @@ def main():
 
         if month == 'all' and day == 'all':
             totals_no_filter(df)
-            input('\nPress \'enter\' to continue: \n')
+            input("\nPress 'enter' to continue: \n")
 
 
         time_stats(df)
-        input('\nPress \'enter\' to continue: \n')
+        input("\nPress 'enter' to continue: \n")
 
         station_stats(df)
-        input('\nPress \'enter\' to continue: \n')
+        input("\nPress 'enter' to continue: \n")
 
         trip_duration_stats(df)
-        input('\nPress \'enter\' to continue: \n')
+        input("\nPress 'enter' to continue: \n")
 
         user_stats(df)
         input('\nPress \'enter\' to continue: \n')
@@ -343,7 +354,7 @@ def main():
         raw_data(df)
 
         restart = input('''\nWould you like to restart?
-Enter \'y\' or \'n\': ''').lower()
+Enter 'y' or 'n': ''').lower()
         if restart != 'y':
             break
 
