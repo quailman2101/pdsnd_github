@@ -1,11 +1,6 @@
 import time
 import pandas as pd
 
-#Dictionary used to load the right csv file
-CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',
-              'washington': 'washington.csv' }
-
 def seperator(x = '=', y = 40):
     """
     Seperator function used for aesthetic purposes.
@@ -23,6 +18,10 @@ def get_filters():
     Returns:
         chosen city, month, day
     """
+    city_data = { 'chicago': 'chicago.csv',
+                  'new york city': 'new_york_city.csv',
+                  'washington': 'washington.csv' }
+
     print('Hello!  Let\'s explore some US bikeshare data!')
     seperator('-')
 
@@ -30,7 +29,7 @@ def get_filters():
     while True:
         city = input('''Which cities data would you like to explore?
 Enter 'chicago', 'new york city', or 'washington': ''').lower()
-        if city in CITY_DATA.keys():
+        if city in city_data.keys():
             break
         else:
             print('\nInvalid input.  Please try again.\n')
@@ -83,8 +82,11 @@ def load_data(city, month, day):
         df - Panda DataFrame containing the city data, filtered if requested
 
     """
+    city_data = { 'chicago': 'chicago.csv',
+                  'new york city': 'new_york_city.csv',
+                  'washington': 'washington.csv' }
     #Load csv into DataFrame and add need columns
-    df = pd.read_csv(CITY_DATA[city])
+    df = pd.read_csv(city_data[city])
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['Month'] = df['Start Time'].dt.month_name()
     df['Day'] = df['Start Time'].dt.day_name()
