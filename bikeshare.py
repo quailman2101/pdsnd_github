@@ -82,19 +82,12 @@ def load_data(city, month, day):
         df - Panda DataFrame containing the city data, filtered if requested
 
     """
-<<<<<<< HEAD
-    #Load csv into DataFrame and add needed columns
-    df = pd.read_csv(CITY_DATA[city])
-||||||| 68fb774
-    #Load csv into DataFrame and add need columns
-    df = pd.read_csv(CITY_DATA[city])
-=======
     city_data = { 'chicago': 'chicago.csv',
                   'new york city': 'new_york_city.csv',
                   'washington': 'washington.csv' }
+
     #Load csv into DataFrame and add need columns
     df = pd.read_csv(city_data[city])
->>>>>>> 81965ce3a227db016759f3bfec94c887480584c2
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['Month'] = df['Start Time'].dt.month_name()
     df['Day'] = df['Start Time'].dt.day_name()
