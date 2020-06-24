@@ -2,7 +2,7 @@
 6/23/2020
 
 ### Project Title
-Don't know what this means
+Bikeshare data analysis
 
 ### Description
 Python script that interacts with user and displays information on bikeshare usage
@@ -14,4 +14,4 @@ new_york_city.csv
 washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+stackskills.com
