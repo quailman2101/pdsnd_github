@@ -83,7 +83,7 @@ def load_data(city, month, day):
         df - Panda DataFrame containing the city data, filtered if requested
 
     """
-    #Load csv into DataFrame and add need columns
+    #Load csv into DataFrame and add needed columns
     df = pd.read_csv(CITY_DATA[city])
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['Month'] = df['Start Time'].dt.month_name()
@@ -197,7 +197,7 @@ def station_stats(df):
     print('The busiest ending station in this data set is {}.'.format(bes))
     seperator('-')
 
-    #Calculate the most frequet combination of starting and ending stations
+    #Calculate the most frequent round trip
     stations = df.groupby(['Start Station', 'End Station']).count()
     print('The most common route is between {} and {}.'\
     .format(stations.idxmax()[0][0], stations.idxmax()[0][1]))
@@ -283,7 +283,7 @@ def user_stats(df):
             print('Looks like someone entered their date of birth incorrectly.')
         seperator('-')
 
-    #Find the most common year of Birth
+    #Find the most common year of birth
         cb = df['Birth Year'].value_counts().idxmax()
         print('The most common birth year for our users is {:.0f}.'.format(cb))
         seperator('-')
@@ -338,6 +338,7 @@ def main():
         input('\nPress \'enter\' to continue: \n')
 
         user_stats(df)
+        input('\nPress \'enter\' to continue: \n')
 
         raw_data(df)
 
