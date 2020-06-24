@@ -311,7 +311,7 @@ def raw_data(df):
     columns = df.shape[1]
     while True:
         r_data = input('''\nWould you like to see some raw data?
-Enter \'y\' or \'n\': ''').lower()
+Enter 'y' or 'n': ''').lower()
         if r_data != 'y':
             break
         else:
@@ -327,24 +327,24 @@ def main():
 
         if month == 'all' and day == 'all':
             totals_no_filter(df)
-            input('\nPress \'enter\' to continue: \n')
+            input("\nPress 'enter' to continue: \n")
 
 
         time_stats(df)
-        input('\nPress \'enter\' to continue: \n')
+        input("\nPress 'enter' to continue: \n")
 
         station_stats(df)
-        input('\nPress \'enter\' to continue: \n')
+        input("\nPress 'enter' to continue: \n")
 
         trip_duration_stats(df)
-        input('\nPress \'enter\' to continue: \n')
+        input("\nPress 'enter' to continue: \n")
 
         user_stats(df)
 
         raw_data(df)
 
         restart = input('''\nWould you like to restart?
-Enter \'y\' or \'n\': ''').lower()
+Enter 'y' or 'n': ''').lower()
         if restart != 'y':
             break
 
