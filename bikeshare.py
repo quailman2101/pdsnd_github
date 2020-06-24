@@ -303,6 +303,7 @@ def raw_data(df):
     """
     #Drop columns I earlier inserted and sort by Start Time
     df = df.drop(['Month', 'Day', 'Hour'], axis = 1)
+    df = df.fillna('Unknown')
     df = df.sort_values(by=['Start Time'])
     df_stacked = df.stack()
 
